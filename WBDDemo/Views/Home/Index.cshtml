@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Employee>
+@{
+    //var employees = ViewBag.Employess as IEnumerable<Employee>;
+    ViewBag.Title = "Employ list";
+}
+<div class="row">
+
+    @foreach (var employee in Model)
+    {
+        <div class="col-sm-3">
+            <div class="card my-2">
+                <div class="card-header">
+                    <h6>@employee.Fullname</h6>
+                </div>
+
+                <img src=@Url.Content(employee.AvatarPath) class="card-img-top" />
+                <div class="card-footer">
+                    @*<a href="Home/Details/@employee.Id">View</a>
+        @Html.ActionLink("Views","Details","Home",new{id=employee.Id})*@
+                    @*cach 1: <a href="@Url.Action("Details","Home",new{id=employee.Id})" class="btn btn-info">View</a>*@
+                    <a asp-controller="Home" asp-action="Details" asp-route-id="@employee.Id" class="btn btn-info">View</a>
+                    <a asp-controller="Home" asp-action="Edit" asp-route-id="@employee.Id" class="btn btn-primary">Edit</a>
+                    <a asp-controller="Home" asp-action="Details" asp-route-id="@employee.Id" class="btn btn-danger">Xoa</a>
+                </div>
+
+
+            </div>
+        </div>
+
+    }
+
+</div>

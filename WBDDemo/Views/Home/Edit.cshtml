@@ -1,0 +1,46 @@
+﻿@model Employee
+@{
+    ViewBag.Title = "Edit employee";
+}
+<form asp-controller="Home" asp-action="Edit" method="post" class="mt-2">
+    <div class="row ">
+        <div class="col-2">
+            <label asp-for="Fullname" ></label>
+        </div>
+        <div class="col-sm-10">
+            <input asp-for="Fullname" class="form-control"/>
+            <span asp-validation-for="Fullname" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row ">
+        <div class="col-2">
+            <label asp-for="Email" ></label>
+        </div>
+        <div class="col-sm-10">
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+
+        </div>
+    </div>
+    <div class="row ">
+        <div class="col-2">
+            <label asp-for="Department" ></label>
+        </div>
+        <div class="col-sm-10">
+            @*<input asp-for="Department" class="form-control" />*@
+            <select asp-for="Department" class="form-control" asp-items="@Html.GetEnumSelectList<Dept>()">
+                <option value=""> Select a deparment</option>
+            </select>
+            <span asp-validation-for="Department" class="text-danger"></span>
+        </div>
+    </div>
+    <div asp-validation-summary="All">
+
+    </div>
+    <div class="row ">
+        <div class="col-sm-12">
+            <button type="submit" class="btn btn-primary">Update</button>
+            <a asp-controller="Home" asp-action="Index" class="btn btn-warning">Cancel</a>
+        </div>
+    </div>
+</form>
